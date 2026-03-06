@@ -1,6 +1,7 @@
-public class Main{
+public class Main {
     public static void main(String[] args) {
         
+        // First Object
         MusicBox mbox = new MusicBox("S34TG65", 'Y', "Raindrops", "Misty", 
         "The path less traveled", "Country", "BZEE Music", "Rhythm Divine");
 
@@ -10,18 +11,16 @@ public class Main{
 
         
         // --- TODO
-
-        /* Repeat the above code to create another object  
-         * Pass different parameters to the MusicBox constructor, but initialise premiumSong to N and when calling the
-         * playSong method, pass ads parameter as just 1
-         * 
-         * 
+        /* * Repeat the above code to create another object.
+         * Pass 'N' for premiumSong and 1 for the ads parameter.
         */
         
+        // Creating the second object using the same constructor format
+        MusicBox anotherBox = new MusicBox("S98RT21", 'N', "Starry Night", "Vincent", 
+        "Midnight Sketches", "Jazz", "Blue Note", "Smooth Records");
+
+        // Calling playSong with 1 for the ads parameter as requested
+        playsong.playSong(anotherBox.getSongID(), anotherBox.getPremiumSong(), 1);
 
     }
 }
-
-
-
-
