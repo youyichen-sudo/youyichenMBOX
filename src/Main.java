@@ -1,26 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        
-        // First Object
-        MusicBox mbox = new MusicBox("S34TG65", 'Y', "Raindrops", "Misty", 
-        "The path less traveled", "Country", "BZEE Music", "Rhythm Divine");
+        ERyder b1 = new ERyder();
+        System.out.println("Testing Default Constructor:");
+        b1.printBikeDetails();
 
-        PlaySongs playsong = new PlaySongs();
+        ERyder b2 = new ERyder("E-BIKE-77", 85, true, 50.5);
+        System.out.println("Testing Parameterized Constructor:");
+        b2.ride();
+        b2.printBikeDetails();
         
-        playsong.playSong(mbox.getSongID(), mbox.getPremiumSong(), 2);
-
-        
-        // --- TODO
-        /* * Repeat the above code to create another object.
-         * Pass 'N' for premiumSong and 1 for the ads parameter.
-        */
-        
-        // Creating the second object using the same constructor format
-        MusicBox anotherBox = new MusicBox("S98RT21", 'N', "Starry Night", "Vincent", 
-        "Midnight Sketches", "Jazz", "Blue Note", "Smooth Records");
-
-        // Calling playSong with 1 for the ads parameter as requested
-        playsong.playSong(anotherBox.getSongID(), anotherBox.getPremiumSong(), 1);
-
+        b2.setBatteryLevel(150);
+        System.out.println("Testing Level Validation: " + b2.getBatteryLevel());
     }
+
 }
