@@ -1,57 +1,67 @@
 public class ERyder {
-    private String bikeID;
-    private int batteryLevel;
-    private boolean isAvailable;
-    private double kmDriven;
+    String bikeID;
+    int batteryLevel;
+    boolean isAvailable;
+    double kmDriven;
 
     public ERyder() {
-        bikeID = "DEF-001";
+        bikeID = "B000";
         batteryLevel = 100;
         isAvailable = true;
         kmDriven = 0.0;
     }
 
-    public ERyder(String bikeID, int batteryLevel, boolean isAvailable, double kmDriven) {
-        this.bikeID = bikeID;
-        setBatteryLevel(batteryLevel);
-        this.isAvailable = isAvailable;
-        this.kmDriven = kmDriven;
+    public ERyder(String id, int battery, boolean available, double km) {
+        bikeID = id;
+        batteryLevel = battery;
+        isAvailable = available;
+        kmDriven = km;
     }
 
     public void ride() {
-        if (isAvailable && batteryLevel > 0) {
-            System.out.println("The bike is available. Enjoy your ride!");
-            kmDriven += 5.0;
-            batteryLevel -= 10;
+        if (batteryLevel > 0 && isAvailable == true) {
+            System.out.println("The bike is available.");
         } else {
             System.out.println("The bike is not available.");
         }
     }
 
     public void printBikeDetails() {
-        System.out.println("ID: " + bikeID);
-        System.out.println("Battery: " + batteryLevel + "%");
+        System.out.println("Bike ID: " + bikeID);
+        System.out.println("Battery: " + batteryLevel);
         System.out.println("Available: " + isAvailable);
-        System.out.println("Distance: " + kmDriven + " km");
-        System.out.println("------------------------------");
+        System.out.println("Distance: " + kmDriven);
     }
 
-    public String getBikeID() { return bikeID; }
-    public void setBikeID(String bikeID) { this.bikeID = bikeID; }
-
-    public int getBatteryLevel() { return batteryLevel; }
-    public void setBatteryLevel(int level) {
-        if (level >= 0 && level <= 100) {
-            this.batteryLevel = level;
+    public void setBatteryLevel(int battery) {
+        if (battery >= 0 && battery <= 100) {
+            batteryLevel = battery;
         } else {
-            this.batteryLevel = 100;
+            System.out.println("Invalid battery level!");
         }
     }
 
-    public boolean isAvailable() { return isAvailable; }
-    public void setAvailable(boolean available) { isAvailable = available; }
+    public String getBikeID() {
+        return bikeID;
+    }
 
-    public double getKmDriven() { return kmDriven; }
-    public void setKmDriven(double kmDriven) { this.kmDriven = kmDriven; }
+    public void setBikeID(String bikeID) {
+        this.bikeID = bikeID;
+    }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public double getKmDriven() {
+        return kmDriven;
+    }
+
+    public void setKmDriven(double kmDriven) {
+        this.kmDriven = kmDriven;
+    }
 }

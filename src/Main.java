@@ -1,16 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        ERyder b1 = new ERyder();
-        System.out.println("Testing Default Constructor:");
-        b1.printBikeDetails();
+        ERyder bike1 = new ERyder();
+        bike1.printBikeDetails();
 
-        ERyder b2 = new ERyder("E-BIKE-77", 85, true, 50.5);
-        System.out.println("Testing Parameterized Constructor:");
-        b2.ride();
-        b2.printBikeDetails();
-        
-        b2.setBatteryLevel(150);
-        System.out.println("Testing Level Validation: " + b2.getBatteryLevel());
+        System.out.println("-------------------");
+
+        ERyder bike2 = new ERyder("E888", 75, true, 12.5);
+        bike2.ride();
+        bike2.printBikeDetails();
     }
-
 }
+
