@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "Exercise3.Main",
+            "projectName": "youyichenMBOX_322fbf68"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "Exercise4.Main",
             "projectName": "youyichenMBOX_322fbf68"
         },
