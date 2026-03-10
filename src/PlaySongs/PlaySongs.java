@@ -1,3 +1,4 @@
+package PlaySongs;
 public class PlaySongs {
     public void playSong(String songID, char premium, int ads) {
         switch(premium){
