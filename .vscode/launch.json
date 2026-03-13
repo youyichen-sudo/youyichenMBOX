@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Feedback",
+            "request": "launch",
+            "mainClass": "Exercise5.Feedback",
+            "projectName": "youyichenMBOX_322fbf68"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Exercise3.Main",
