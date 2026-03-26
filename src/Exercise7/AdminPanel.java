@@ -3,13 +3,11 @@ package Exercise7;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 public class AdminPanel {
 
-    List<RegisteredUsers> registeredUsers = new ArrayList<>();
+    ArrayList<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
 
     public void userManagementOptions() {
@@ -93,14 +91,8 @@ public class AdminPanel {
                 System.out.print("Feedback: ");
                 String feedback = sc.nextLine();
 
-                StringBuilder sb = new StringBuilder();
-                sb.append("Date: ").append(date)
-                        .append(", Source: ").append(src)
-                        .append(", Destination: ").append(dest)
-                        .append(", Fare (€): ").append(fare)
-                        .append(", Feedback: ").append(feedback);
-
-                trips[j] = sb.toString();
+                String tripInfo = "Date: " + date + ", Source: " + src + ", Destination: " + dest + ", Fare: " + fare + ", Feedback: " + feedback;
+                trips[j] = tripInfo;
             }
 
             RegisteredUsers user = new RegisteredUsers(name, email, dob, card, exp, provider, cvv, type, trips);
@@ -115,9 +107,9 @@ public class AdminPanel {
             return;
         }
 
-        for (RegisteredUsers user : registeredUsers) {
+        for (int i = 0; i < registeredUsers.size(); i++) {
             System.out.println("------------------------------");
-            System.out.println(user);
+            System.out.println(registeredUsers.get(i).toString());
             System.out.println("------------------------------");
         }
     }
@@ -130,21 +122,15 @@ public class AdminPanel {
 
         System.out.print("Enter email to remove: ");
         String email = sc.nextLine();
-        boolean found = false;
-
-        Iterator<RegisteredUsers> it = registeredUsers.iterator();
-        while (it.hasNext()) {
-            RegisteredUsers u = it.next();
-            if (u.getEmailAddress().equals(email)) {
-                it.remove();
-                found = true;
+        
+        for (int i = 0; i < registeredUsers.size(); i++) {
+            if (registeredUsers.get(i).getEmailAddress().equals(email)) {
+                registeredUsers.remove(i);
                 System.out.println("User removed successfully");
+                return;
             }
         }
-
-        if (!found) {
-            System.out.println("No user found with this email address");
-        }
+        System.out.println("No user found with this email address");
     }
 
     private void updateRegisteredUsers() {
@@ -157,9 +143,9 @@ public class AdminPanel {
         String email = sc.nextLine();
         RegisteredUsers target = null;
 
-        for (RegisteredUsers u : registeredUsers) {
-            if (u.getEmailAddress().equals(email)) {
-                target = u;
+        for (int i = 0; i < registeredUsers.size(); i++) {
+            if (registeredUsers.get(i).getEmailAddress().equals(email)) {
+                target = registeredUsers.get(i);
                 break;
             }
         }

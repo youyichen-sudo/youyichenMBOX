@@ -1,5 +1,7 @@
 package Exercise7;
 
+
+
 public class RegisteredUsers {
 
     private String fullName;
