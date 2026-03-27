@@ -1,4 +1,4 @@
-package Exercise6;
+package ERyder;
 
 import java.util.Scanner;
 import java.time.LocalDate;

@@ -1,9 +1,11 @@
-package Exercise7;
+package ERyder;
 
 
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class AdminPanel {
 

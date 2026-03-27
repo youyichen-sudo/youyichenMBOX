@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Main",
             "request": "launch",
+            "mainClass": "ERyder.Main",
+            "projectName": "youyichenMBOX_322fbf68"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
             "mainClass": "Exercise7.Main",
             "projectName": "youyichenMBOX_322fbf68"
         },

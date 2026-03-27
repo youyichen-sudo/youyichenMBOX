@@ -1,4 +1,4 @@
-package Exercise5;
+package ERyder;
 public class Feedback {
     private String firstName;
     private String lastName;

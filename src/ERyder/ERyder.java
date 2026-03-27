@@ -1,4 +1,4 @@
-package Exercise4;
+package ERyder;
 
 public class ERyder {
     String bikeID;
