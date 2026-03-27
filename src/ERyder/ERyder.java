@@ -1,5 +1,7 @@
 package ERyder;
 
+
+
 public class ERyder {
     String bikeID;
     int batteryLevel;
@@ -13,9 +15,6 @@ public class ERyder {
     private final String LINKED_ACCOUNT;
     private final String LINKED_PHONE_NUMBER;
 
-    private int totalUsageInMinutes;
-    private double totalFare;
-
     public ERyder() {
         bikeID = "B000";
         batteryLevel = 100;
@@ -23,8 +22,6 @@ public class ERyder {
         kmDriven = 0.0;
         LINKED_ACCOUNT = "None";
         LINKED_PHONE_NUMBER = "000000";
-        totalUsageInMinutes = 0;
-        totalFare = 0.0;
     }
 
     public ERyder(String id, int battery, boolean available, double km, String account, String phone) {

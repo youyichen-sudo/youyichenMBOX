@@ -1,62 +1,80 @@
 package ERyder;
 
+
+
 import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class BikeRental {
+
+    private boolean isRegistered;
     private String emailAddress;
     private String location;
+    private LocalDateTime tripStartTime;
     private String bikeID;
+    private boolean locationValid;
+
+    private UserRegistration userRegistration;
+    private ActiveRental activeRental;
     private LinkedList<ActiveRental> activeRentalsList = new LinkedList<>();
-    private Scanner sc = new Scanner(System.in);
+
+    Scanner scanner = new Scanner(System.in);
 
     public void simulateApplicationInput() {
-        System.out.print("Enter email: ");
-        emailAddress = sc.nextLine();
+        System.out.print("Enter your email: ");
+        emailAddress = scanner.nextLine();
+
         analyseRequest();
 
         System.out.print("Enter location: ");
-        location = sc.nextLine();
+        location = scanner.nextLine();
+
         bikeID = validateLocation();
 
-        if (bikeID != null) {
-            reserveBike();
-        }
+        reserveBike();
 
         System.out.println("\n--- Active Rentals ---");
         viewActiveRentals();
 
-        System.out.println("\n--- Ending Trip ---");
+        System.out.println("\nNow ending the trip...");
         removeTrip();
 
-        System.out.println("\n--- After Trip End ---");
+        System.out.println("\n--- After End Trip ---");
         viewActiveRentals();
     }
 
     public void analyseRequest() {
+        isRegistered = true;
         System.out.println("Welcome back, " + emailAddress);
     }
 
     public String validateLocation() {
-        for (Bike bike : BikeDatabase.bikeList) {
+        for (Bike bike : BikeDatabase.bikes) {
             if (bike.getLocation().equalsIgnoreCase(location) && bike.isAvailable()) {
+                locationValid = true;
                 return bike.getBikeID();
             }
         }
-        System.out.println("No bike available.");
+        locationValid = false;
+        System.out.println("No available bikes at this location!");
         return null;
     }
 
     public void reserveBike() {
-        for (Bike bike : BikeDatabase.bikeList) {
+        if (bikeID == null) {
+            return;
+        }
+
+        for (Bike bike : BikeDatabase.bikes) {
             if (bike.getBikeID().equals(bikeID)) {
                 bike.setAvailable(false);
                 bike.setLastUsedTime(LocalDateTime.now());
+
                 ActiveRental rental = new ActiveRental(bikeID, emailAddress, LocalDateTime.now());
                 activeRentalsList.add(rental);
-                System.out.println("Bike reserved!");
+                System.out.println("Bike " + bikeID + " reserved successfully!");
             }
         }
     }
@@ -68,7 +86,7 @@ public class BikeRental {
         }
 
         for (ActiveRental ar : activeRentalsList) {
-            System.out.println("Bike: " + ar.getBikeID() + " | User: " + ar.getUserEmail());
+            System.out.println("Bike ID: " + ar.getBikeID() + " | User: " + ar.getUserEmail());
         }
     }
 
@@ -77,15 +95,16 @@ public class BikeRental {
 
         while (iterator.hasNext()) {
             ActiveRental rental = iterator.next();
+
             if (rental.getUserEmail().equals(emailAddress)) {
                 iterator.remove();
 
-                for (Bike bike : BikeDatabase.bikeList) {
+                for (Bike bike : BikeDatabase.bikes) {
                     if (bike.getBikeID().equals(rental.getBikeID())) {
                         bike.setAvailable(true);
                     }
                 }
-                System.out.println("Trip ended.");
+                System.out.println("Trip ended successfully!");
             }
         }
     }

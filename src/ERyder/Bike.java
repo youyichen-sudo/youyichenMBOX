@@ -8,7 +8,7 @@ public class Bike {
     private int batteryLevel;
     private LocalDateTime lastUsedTime;
     private String location;
-    
+
     public Bike(String bikeID, boolean isAvailable, int batteryLevel, LocalDateTime lastUsedTime, String location) {
         this.bikeID = bikeID;
         this.isAvailable = isAvailable;
@@ -35,5 +35,13 @@ public class Bike {
 
     public LocalDateTime getLastUsedTime() {
         return lastUsedTime;
+    }
 
+    public void setLastUsedTime(LocalDateTime lastUsedTime) {
+        this.lastUsedTime = lastUsedTime;
+    }
+
+    public String getLocation() {
+        return location;
+    }
 }
