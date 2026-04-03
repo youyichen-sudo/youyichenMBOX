@@ -1,16 +1,13 @@
 package ERyder;
 
-
-
 import java.util.ArrayList;
 import java.util.Scanner;
-
-
 
 public class AdminPanel {
 
     ArrayList<RegisteredUsers> registeredUsers = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
+    BikeService bikeService = new BikeService();
 
     public void userManagementOptions() {
         while (true) {
@@ -20,7 +17,9 @@ public class AdminPanel {
             System.out.println("2. View Registered Users");
             System.out.println("3. Remove Registered Users");
             System.out.println("4. Update Registered Users");
-            System.out.println("5. EXIT");
+            System.out.println("5. View System Logs");
+            System.out.println("6. Manage Pending Bike Requests");
+            System.out.println("7. EXIT");
 
             int choice = sc.nextInt();
             sc.nextLine();
@@ -34,10 +33,43 @@ public class AdminPanel {
             } else if (choice == 4) {
                 updateRegisteredUsers();
             } else if (choice == 5) {
+                viewSystemLogs();
+            } else if (choice == 6) {
+                managePendingRequests();
+            } else if (choice == 7) {
                 System.out.println("Exiting...");
                 break;
             } else {
                 System.out.println("Invalid choice. Please try again");
+            }
+        }
+    }
+
+    public void viewSystemLogs() {
+        System.out.println("\n--- SYSTEM LOGS ---");
+        bikeService.viewSystemLogs();
+    }
+
+    public void managePendingRequests() {
+        while (true) {
+            System.out.println("\n--- Manage Pending Bike Requests ---");
+            System.out.println("1. View Queue");
+            System.out.println("2. Update Queue");
+            System.out.println("3. Back");
+
+            int c = sc.nextInt();
+            sc.nextLine();
+
+            if (c == 1) {
+                System.out.println("\n--- Pending Requests ---");
+                bikeService.viewBikeRequestQueue();
+            } else if (c == 2) {
+                bikeService.removeFirstRequest();
+                System.out.println("First request removed");
+            } else if (c == 3) {
+                break;
+            } else {
+                System.out.println("Invalid choice");
             }
         }
     }
